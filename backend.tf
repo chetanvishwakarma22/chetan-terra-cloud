@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "tfbucket049884"
+    bucket = "nithin-s3-terraform"
     key = "remote.tfstate"
-    region = "us-east-2"
+    region = "ap-south-1"
   }
 }
