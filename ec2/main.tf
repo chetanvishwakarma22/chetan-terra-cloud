@@ -33,7 +33,7 @@ resource "aws_instance" "ourfirst" {
   instance_type          = "t2.micro"
   user_data              = filebase64("install_ansible.sh")
   vpc_security_group_ids = [aws_security_group.webserver_access.id]  # Correct reference
-  key_name               = "mykeypair"
+  key_name               = "EBS_key"
   
   tags = {
     Name      = "ec2-test"
