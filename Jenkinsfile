@@ -13,7 +13,7 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         AWS_DEFAULT_REGION    = "us-east-2"
-        SSH_KEY = "/home/ubuntu/.ssh/revision.pem"  // Replace with your private key
+        SSH_KEY = "/home/ubuntu/.ssh/mykeypair.pem"  // Replace with your private key
         ANSIBLE_PLAYBOOK = "webserver.yml"
         GIT_REPO = "https://github.com/hhgsharish/Ansible_Playbook_Harish.git"
     }
@@ -36,7 +36,7 @@ pipeline {
                                     rm -rf terra-cloud
                                 fi
                                 echo "Cloning the repository..."
-                                git clone "https://github.com/hhgsharish/terra-cloud.git"
+                                git clone "https://github.com/nithinkkumar95/terra-cloud.git"
                             '''
                         }
                     }
