@@ -105,7 +105,7 @@ pipeline {
 
          stage('Checkout Code') {
             steps {
-                git branch: 'main', url: "${GIT_REPO}"
+                git clone "https://github.com/hhgsharish/Ansible_Playbook_Harish.git"
             }
         }
 
