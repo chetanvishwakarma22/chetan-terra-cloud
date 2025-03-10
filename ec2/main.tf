@@ -32,6 +32,7 @@ resource "aws_instance" "ourfirst" {
   availability_zone      = "ap-south-1b"
   subnet_id              = "subnet-08df04774a73f1298"
   instance_type          = "t2.micro"
+  associate_public_ip_address = true
   #user_data              = filebase64("install_ansible.sh")
   vpc_security_group_ids = [aws_security_group.webserver_access.id]  # Correct reference
   key_name               = "JTA-KEYPAIR"
