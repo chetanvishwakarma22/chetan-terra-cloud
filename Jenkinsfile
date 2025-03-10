@@ -31,9 +31,9 @@ pipeline {
                         dir("terraform") {
                             // Check if the "terra-cloud" directory exists
                             sh '''
-                                if [ -d "terra-cloud" ]; then
+                                if [ -d "chetan-terra-cloud" ]; then
                                     echo "Directory exists. Deleting it..."
-                                    rm -rf terra-cloud
+                                    rm -rf chetan-terra-cloud
                                 fi
                                 echo "Cloning the repository..."
                                 git clone "https://github.com/chetanvishwakarma22/chetan-terra-cloud.git"
@@ -51,7 +51,7 @@ pipeline {
             }
             
           steps {
-                dir('terraform/terra-cloud') {  // Adjust path as needed
+                dir('terraform/chetan-terra-cloud') {  // Adjust path as needed
                     sh 'terraform init -input=false'
                     sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
                     sh "terraform plan -input=false -out tfplan "
@@ -85,7 +85,7 @@ pipeline {
             }
             
            steps {
-                dir('terraform/terra-cloud') {  // Add this directory block, same as in Plan stage
+                dir('terraform/chetan-terra-cloud') {  // Add this directory block, same as in Plan stage
                     sh "terraform apply -input=false tfplan"
                 }
             }
@@ -97,7 +97,7 @@ pipeline {
             }
         
         steps {
-                dir('terraform/terra-cloud') {  // Add this directory block, same as in Plan stage
+                dir('terraform/chetan-terra-cloud') {  // Add this directory block, same as in Plan stage
            sh "terraform destroy --auto-approve"
                 }
         }
@@ -112,7 +112,7 @@ pipeline {
           stage('Get EC2 Public IP') {
             steps {
                 script {
-                    dir('terraform/terra-cloud') {
+                    dir('terraform/chetan-terra-cloud') {
                     def output = sh(script: "terraform output -raw ec2_public_ip", returnStdout: true).trim()
                     env.EC2_IP = output
                     echo "EC2 Public IP: ${env.EC2_IP}"
