@@ -31,9 +31,9 @@ resource "aws_instance" "ourfirst" {
   ami                    = "ami-00bb6a80f01f03502"
   //availability_zone      = "ap-south-1"
   instance_type          = "t2.micro"
-  user_data              = filebase64("install_ansible.sh")
+  #user_data              = filebase64("install_ansible.sh")
   vpc_security_group_ids = [aws_security_group.webserver_access.id]  # Correct reference
-  key_name               = "mykeypair"
+  key_name               = "JTA-KEYPAIR"
   
   tags = {
     Name      = "ec2-test"
